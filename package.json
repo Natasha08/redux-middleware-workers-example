@@ -51,6 +51,7 @@
   "scripts": {
     "build": "webpack",
     "start": "npm run build && hjs-dev-server",
-    "test": "mocha-webpack -r jsdom-global/register"
+    "test": "mocha-webpack -r jsdom-global/register",
+    "watch-test": "mocha-webpack -r jsdom-global/register --watch"
   }
 }
