@@ -1,0 +1,4 @@
+--colors
+--include spec/spec_helper.js
+--webpack-config webpack.config-test.js
+spec/

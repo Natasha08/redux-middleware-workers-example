@@ -15,7 +15,7 @@
     "global": "^4.3.2",
     "hjs-webpack": "^9.1.0",
     "html-webpack-plugin": "2.29.0",
-    "jest": "20.0.4",
+    "lodash": "^4.17.4",
     "postcss-loader": "^2.0.7",
     "react": "^16.0.0",
     "react-dev-utils": "^4.1.0",
@@ -30,15 +30,27 @@
     "webpack-dev-server": "2.8.2",
     "worker-loader": "^1.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ampersand-app": "^2.0.0",
+    "babel-plugin-react-autorequire": "^1.1.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "chai": "^4.1.2",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "es6-promise": "^4.1.1",
+    "jsdom": "^11.3.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^4.0.1",
+    "mocha-jsdom": "^1.1.0",
+    "mocha-webpack": "^0.7.0",
+    "react-test-renderer": "^16.0.0",
+    "sinon": "^4.0.1",
+    "sinon-chai": "^2.14.0",
+    "webpack-node-externals": "^1.6.0"
+  },
   "scripts": {
     "build": "webpack",
     "start": "npm run build && hjs-dev-server",
-    "test": "jest",
-    "test:watch": "jest --watch"
-  },
-  "jest": {
-    "setupFiles": ["./spec/jestsetup.js"],
-    "snapshotSerializers": ["enzyme-to-json/serializer"]
+    "test": "mocha-webpack -r jsdom-global/register"
   }
 }
