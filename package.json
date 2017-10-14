@@ -33,6 +33,12 @@
   "devDependencies": {},
   "scripts": {
     "build": "webpack",
-    "start": "npm run build && hjs-dev-server"
+    "start": "npm run build && hjs-dev-server",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "setupFiles": ["./spec/jestsetup.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
