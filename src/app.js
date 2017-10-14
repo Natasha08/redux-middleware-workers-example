@@ -9,7 +9,7 @@ import Main from './main';
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basepath='/'>
       <Route path='/' component={Main}/>
     </BrowserRouter>
   </Provider>

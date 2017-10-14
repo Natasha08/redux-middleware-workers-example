@@ -1,9 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import workerMiddleware from './workers/middleware';
-
-const rootReducer = () => {
-  
-};
+import rootReducer from './reducers/index';
 
 const store = createStore(
   rootReducer,

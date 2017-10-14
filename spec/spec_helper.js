@@ -35,17 +35,7 @@ var fakeServer = _.assign({}, sinon.fakeServer, {
 
 var useFakeXMLHttpRequest = sinon.useFakeXMLHttpRequest.bind(sinon);
 
-global.sinon = {
-  stub: function() {
-    throw new Error('call this.sinon.stub instead');
-  },
-
-  spy: function() {
-    throw new Error('call this.sinon.spy instead');
-  },
-
-  useFakeXMLHttpRequest, fakeServer
-};
+global.sinon = sinon;
 
 beforeEach(function() {
   this.sinon = sinon.sandbox.create();
