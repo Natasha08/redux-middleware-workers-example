@@ -12,6 +12,6 @@ describe('when the first worker button is pressed', () => {
     const button = wrapper.find('.first-worker');
     button.simulate('click');
     const actions = store.getActions();
-    expect(...actions).to.deep.equal({type: 'FIRST_WORKER', meta: {webworker: true, type: 'WORKER_TYPE_ONE'}});
+    expect(...actions).to.deep.equal({type: 'FIRST_WORKER_LOADING', meta: {webworker: true, type: 'WORKER_TYPE_ONE'}});
   });
 });
