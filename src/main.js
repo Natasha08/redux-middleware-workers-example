@@ -12,14 +12,14 @@ class Main extends React.Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (nextState.firstWorkerLoading && nextProps.first_worker && !nextProps.first_worker.loading) {
+    if (nextState.firstWorkerLoading && nextProps.firstWorker && !nextProps.firstWorker.loading) {
       this.setState({firstWorkerLoading: false});
     }
   }
-  
+
   render() {
     const {firstWorkerLoading} = this.state;
-    const {first_worker: firstWorker} = this.props;
+    const {firstWorker} = this.props;
     const firstWorkerComplete = firstWorker && !firstWorkerLoading;
 
     return (
@@ -30,14 +30,14 @@ class Main extends React.Component {
         <p>
           Click one of the two buttons to start a web-worker
         </p>
-        {firstWorkerComplete && <div>{this.props.first_worker.type}</div>}
+        {firstWorkerComplete && <div>{firstWorker.type}</div>}
         <button className="first-worker" onClick={(e) => this.callFirstWorker()}>First Worker</button>
       </div>
     );
   }
 }
 
-const mapStoreToProps = ({first_worker}) => ({first_worker});
+const mapStoreToProps = ({firstWorker}) => ({firstWorker});
 const mapDispatchToProps = (dispatch) => {
   return {
     activateFirstWorker: () => dispatch(activateFirstWorker())
