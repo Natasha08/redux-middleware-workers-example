@@ -16,6 +16,7 @@ class Main extends React.Component {
         <p>
           Click one of the two buttons to start a web-worker
         </p>
+        { this.props.first_worker && <div>{this.props.first_worker.type}</div>}
         <button className="first-worker" onClick={(e) => this.callFirstWorker()}>First Worker</button>
       </div>
     );

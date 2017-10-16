@@ -1,6 +1,6 @@
 export default function(state={}, action) {
-  if (action.type === 'FIRST_WORKER') {
-    return { ...state };
+  if (action.type === 'WORKER_1_COMPLETE') {
+    return { ...state, ...action };
   }
 
   return state;

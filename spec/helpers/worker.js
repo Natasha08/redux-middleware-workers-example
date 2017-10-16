@@ -7,7 +7,11 @@ export default class Worker {
 
   onmessage(data) {
     const action = { type: 'test', meta: {webworker: true, type: 'another thing'} };
-    this.postMessage(action, 'message');
+    setTimeout(() => {
+      const data = this.fn(msg);
+      this.postMessage(action, 'message');
+    }, 10000);
+
 
   }
   postMessage(msg, message) {
@@ -19,7 +23,7 @@ export default class Worker {
       setTimeout(() => {
         const data = this.fn(msg);
         this.onmessage({ data });
-      }, 0);
+      }, 10000);
     }
   }
 
@@ -28,7 +32,7 @@ export default class Worker {
     return (data) => {
       setTimeout(() => {
         futureCallback({data});
-      }, 0);
+      }, 10000);
     }
   }
 }

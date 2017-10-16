@@ -1,9 +1,9 @@
 import createWorkerMiddleware from 'redux-middleware-workers';
 
-import testWorker from 'worker-loader?inline!./test_worker.js';
-import testWorker2 from 'worker-loader?inline!./test_worker2.js';
+import testWorker from 'worker-loader?inline!./worker1.js';
+import testWorker2 from 'worker-loader?inline!./worker2.js';
 
-const testWorkerMiddleware = createWorkerMiddleware(new testWorker(), 'FIRST_TEST');
+const testWorkerMiddleware = createWorkerMiddleware(new testWorker(), 'WORKER_TYPE_ONE');
 const testWorker2Middleware = createWorkerMiddleware(new testWorker2(), 'SECOND_TEST');
 
 export default [testWorkerMiddleware, testWorker2Middleware];
