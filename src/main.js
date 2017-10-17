@@ -23,10 +23,11 @@ class Main extends React.Component {
     const firstWorkerComplete = firstWorker && !firstWorkerLoading;
 
     return (
-      <div>
+      <div className="App-header">
         <header>
           <h1>Redux middleware workers example</h1>
         </header>
+        <div className="dot"></div>
         <p>
           Click one of the two buttons to start a web-worker
         </p>
