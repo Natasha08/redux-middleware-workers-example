@@ -32,20 +32,23 @@ class Main extends React.Component {
     const {firstWorker, secondWorker} = this.props;
     const firstWorkerComplete = firstWorker && !firstWorkerLoading;
     const secondWorkerComplete = secondWorker && !secondWorkerLoading;
-    console.log("WHY ARENT YOU SHOWING", secondWorker)
     return (
       <div>
-        <header className=" App App-header">
+        <header className='app app-header'>
           <h1>Redux middleware workers example</h1>
         </header>
-        <div className="dot"></div>
+        <div className='dot'></div>
         <p>
           Click one of the two buttons to start a web-worker
         </p>
-        {firstWorkerComplete && <div>{firstWorker.type}</div>}
-        <button className="first-worker" onClick={(e) => this.callFirstWorker()}>First Worker</button>
-        {secondWorkerComplete && <div>{secondWorker.type}</div>}
-        <button className="second-worker" onClick={(e) => this.callSecondWorker()}>Second Worker</button>
+        <div className='worker-section'>
+          {firstWorkerComplete && <div>{firstWorker.message}</div>}
+          <button className='first-worker' onClick={(e) => this.callFirstWorker()}>First Worker</button>
+        </div>
+        <div className='worker-section'>
+          {secondWorkerComplete && <div>{secondWorker.message}</div>}
+          <button className='second-worker' onClick={(e) => this.callSecondWorker()}>Second Worker</button>
+        </div>
       </div>
     );
   }
