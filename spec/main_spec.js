@@ -8,10 +8,19 @@ describe('when the first worker button is pressed', () => {
   const store = mockStore({});
   const wrapper = createWrapper(Main, store);
 
-  it('dispatches the "FIRST_WORKER action"', () => {
+  it('dispatches the "FIRST_WORKER_LOADING action"', () => {
     const button = wrapper.find('.first-worker');
     button.simulate('click');
     const actions = store.getActions();
     expect(...actions).to.deep.equal({type: 'FIRST_WORKER_LOADING', meta: {webworker: true, type: 'WORKER_TYPE_ONE'}});
+    store.clearActions();
+  });
+
+  it('dispatches the "SECOND_WORKER_LOADING action"', () => {
+    const button = wrapper.find('.second-worker');
+    button.simulate('click');
+    const actions = store.getActions();
+    expect(...actions).to.deep.equal({type: 'SECOND_WORKER_LOADING', meta: {webworker: true, type: 'WORKER_TYPE_TWO'}});
+    store.clearActions();
   });
 });

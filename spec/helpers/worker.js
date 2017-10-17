@@ -8,7 +8,6 @@ export default class Worker {
   onmessage(data) {
     const action = { type: 'test', meta: {webworker: true, type: 'another thing'} };
     setTimeout(() => {
-      const data = this.fn(msg);
       this.postMessage(action, 'message');
     }, 10000);
 
