@@ -44,9 +44,9 @@ export default function(path) {
       wait: (processor, timeout) => {
         return driver.wait(processor, timeout);
       },
-      simulateTextChange: ({timeout, selector, message}, testExpectation) => {
+      createTextChange: ({timeout, selector, expectedText}, testExpectation) => {
         const element = findElement(selector);
-        return driver.wait(until.elementTextIs(element, message), timeout)
+        return driver.wait(until.elementTextIs(element, expectedText), timeout)
         .then(function() {
           return testExpectation(element.getText());
         });
