@@ -14,6 +14,17 @@ require('es6-promise').polyfill();
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
 
+import webdriver from 'selenium-webdriver';
+import chrome from 'selenium-webdriver/chrome';
+const path = require('chromedriver').path;
+
+const service = new chrome.ServiceBuilder(path).build();
+
+chrome.setDefaultService(service);
+
+global.By = webdriver.By;
+global.until = webdriver.until;
+
 global.navigator = {
   userAgent: 'node.js'
 };
@@ -39,10 +50,14 @@ global.sinon = sinon;
 
 beforeEach(function() {
   this.sinon = sinon.sandbox.create();
+  global.driver = new webdriver.Builder()
+  .withCapabilities(webdriver.Capabilities.chrome())
+  .build();
 });
 
 afterEach(function() {
   this.sinon.restore();
+  driver.quit();
 });
 
 var context = require.context('../spec', true, /.+[_.-]spec\.jsx?$/);
