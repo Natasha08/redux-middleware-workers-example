@@ -7,7 +7,7 @@ describe('E2E testing for worker middleware', function () {
   this.timeout(MAX_TEST_TIMEOUT);
 
   const newWorkerDriver = new workerDriver('http://localhost:3001');
-  const { navigate, getText, submit, createTextChange } = newWorkerDriver.methods;
+  const { navigate, getText, clickButton, createTextChange } = newWorkerDriver.methods;
 
   beforeEach(function() {
     createDriverInstance();
@@ -15,7 +15,7 @@ describe('E2E testing for worker middleware', function () {
   });
 
   it('starts the first worker', function() {
-    submit('.first-worker');
+    clickButton('.first-worker');
 
     const workerInProgress = () => {
       expect(getText('.first-message')).to.eventually.equal('Worker one is processing...');
@@ -33,7 +33,7 @@ describe('E2E testing for worker middleware', function () {
       timeout: WORKER_TIMEOUT
     };
 
-    submit('.first-worker');
+    clickButton('.first-worker');
 
     return createTextChange(textChange, (data) => {
       data.then((text) => {
@@ -43,7 +43,7 @@ describe('E2E testing for worker middleware', function () {
   });
 
   it('starts the second worker', function() {
-    submit('.second-worker');
+    clickButton('.second-worker');
 
     const workerInProgress = () => {
       return expect(getText('.second-message')).to.eventually.equal('Worker two is processing...');
@@ -60,7 +60,7 @@ describe('E2E testing for worker middleware', function () {
       timeout: WORKER_TIMEOUT
     };
 
-    submit('.second-worker');
+    clickButton('.second-worker');
 
     return createTextChange(textChange, (data) => {
       data.then((text) => {

@@ -36,7 +36,7 @@ export default function(path) {
 
         return findElement(selector).getText();
       },
-      submit: (selector) => {
+      clickButton: (selector) => {
         if (!selector) throw new Error('Please provide a css selector');
 
         return findElement(selector).click();
