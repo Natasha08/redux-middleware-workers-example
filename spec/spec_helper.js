@@ -41,16 +41,21 @@ global._ = global._ || _;
 
 global.sinon = sinon;
 
-beforeEach(function() {
-  this.sinon = sinon.sandbox.create();
-  global.driver = new webdriver.Builder()
+global.driver = {};
+
+global.createDriverInstance = () => {
+  driver = new webdriver.Builder()
   .withCapabilities(webdriver.Capabilities.chrome())
   .build();
+};
+
+beforeEach(function() {
+  this.sinon = sinon.sandbox.create();
 });
 
 afterEach(function() {
   this.sinon.restore();
-  driver.quit();
+  if (driver.quit) driver.quit();
 });
 
 var context = require.context('../spec', true, /.+[_.-]spec\.jsx?$/);

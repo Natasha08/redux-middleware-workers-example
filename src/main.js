@@ -46,7 +46,7 @@ class Main extends React.Component {
           <button className='first-worker' onClick={(e) => this.callFirstWorker()}>First Worker</button>
         </div>
         <div className='worker-section'>
-          {secondWorkerComplete && <div>{secondWorker.message}</div>}
+          {secondWorkerComplete && <div className='second-message'>{secondWorker.message}</div>}
           <button className='second-worker' onClick={(e) => this.callSecondWorker()}>Second Worker</button>
         </div>
       </div>

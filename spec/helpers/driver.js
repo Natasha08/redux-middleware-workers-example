@@ -1,11 +1,10 @@
 const webdriver = require('selenium-webdriver');
 
-export default function(path, visibleSelector) {
+export default function(path) {
   if (!path) throw new Error('Please provide a path for the driver to navigate to');
-  if (!visibleSelector) throw new Error('Please the selector for the element that should display on successful navigation');
 
   const waitUntilVisible = () => {
-    return driver.wait(until.elementLocated(By.css(visibleSelector)));
+    return driver.wait(until.elementLocated(By.css('.first-worker')));
   };
 
     return {
