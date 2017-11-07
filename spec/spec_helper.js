@@ -6,7 +6,8 @@ var exposedProperties = ['window', 'navigator', 'document'];
 import app from 'ampersand-app';
 import chai from 'chai';
 import sinon from 'sinon';
-import sinonChai from 'sinon-chai'
+import sinonChai from 'sinon-chai';
+import chaiAsPromised from 'chai-as-promised';
 import _ from 'lodash';
 import Adapter from 'enzyme-adapter-react-16';
 import {configure} from 'enzyme';
@@ -32,19 +33,11 @@ global.navigator = {
 configure({ adapter: new Adapter() });
 
 chai.use(sinonChai);
+chai.use(chaiAsPromised);
 
 global.chai = chai;
 global.expect = chai.expect;
 global._ = global._ || _;
-
-var fakeServer = _.assign({}, sinon.fakeServer, {
-  create: function() {
-    xhr.XMLHttpRequest = sinon.useFakeXMLHttpRequest();
-    return sinon.fakeServer.create.call(fakeServer);
-  }
-});
-
-var useFakeXMLHttpRequest = sinon.useFakeXMLHttpRequest.bind(sinon);
 
 global.sinon = sinon;
 
