@@ -1,4 +1,4 @@
-import workerDriver from './helpers/driver';
+import workerDriver from '../helpers/driver';
 
 const WORKER_TIMEOUT = 6000;
 const MAX_TEST_TIMEOUT = 10000;

@@ -17,3 +17,15 @@ npm install -g yarn
 `yarn start`
 
 open browser at 'localhost:3001'
+
+### testing
+
+#### unit testing
+
+`yarn test`
+`yarn watch-test`
+
+#### integration testing
+
+`yarn integration-test`
+`yarn watch-integration-test`
