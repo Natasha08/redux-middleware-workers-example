@@ -42,11 +42,11 @@ class Main extends React.Component {
           Click one of the two buttons to start a web-worker
         </p>
         <div className='worker-section'>
-          {firstWorkerComplete && <div>{firstWorker.message}</div>}
+          {firstWorkerComplete && <div className='first-message'>{firstWorker.message}</div>}
           <button className='first-worker' onClick={(e) => this.callFirstWorker()}>First Worker</button>
         </div>
         <div className='worker-section'>
-          {secondWorkerComplete && <div>{secondWorker.message}</div>}
+          {secondWorkerComplete && <div className='second-message'>{secondWorker.message}</div>}
           <button className='second-worker' onClick={(e) => this.callSecondWorker()}>Second Worker</button>
         </div>
       </div>

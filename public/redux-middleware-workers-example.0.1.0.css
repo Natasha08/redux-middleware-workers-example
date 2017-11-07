@@ -4,23 +4,26 @@ body {
   font-family: sans-serif;
 }
 
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
-  background-color: #222;
+.app-header {
+  background-color: blue;
   height: 150px;
   padding: 20px;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.worker-section {
+  display: inline-block;
+  width: 300px;
+  height: auto;
 }
 
-.App-intro {
-  font-size: large;
+.worker-section button {
+  width: 30%;
+  background-color: gray;
 }
 
 @-webkit-keyframes App-logo-spin {
