@@ -35,6 +35,16 @@ export default function(path) {
         if (!selector) throw new Error('Please provide a css selector');
 
         return driver.findElement(By.css(selector)).click();
+      },
+      wait: (processor, timeout) => {
+        return driver.wait(processor, timeout);
+      },
+      simulateTextChange: ({timeout, selector, message}, testExpectation) => {
+        const element = driver.findElement(By.css(selector));
+        return driver.wait(until.elementTextIs(element, message), timeout)
+        .then(function() {
+          return testExpectation(element.getText());
+        });
       }
     };
 };
