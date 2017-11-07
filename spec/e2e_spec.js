@@ -1,4 +1,4 @@
-import newDriver from './helpers/driver';
+import workerDriver from './helpers/driver';
 
 const WORKER_TIMEOUT = 6000;
 const MAX_TEST_TIMEOUT = 10000;
@@ -6,8 +6,8 @@ const MAX_TEST_TIMEOUT = 10000;
 describe('E2E testing for worker middleware', function () {
   this.timeout(MAX_TEST_TIMEOUT);
 
-  const workerDriver = newDriver('http://localhost:3001');
-  const { navigate, getText, submit, simulateTextChange } = workerDriver;
+  const newWorkerDriver = new workerDriver('http://localhost:3001');
+  const { navigate, getText, submit, simulateTextChange } = newWorkerDriver.methods;
 
   beforeEach(function() {
     createDriverInstance();
@@ -16,7 +16,7 @@ describe('E2E testing for worker middleware', function () {
 
   it('starts the first worker', function() {
     submit('.first-worker');
-
+    
     const workerInProgress = () => {
       expect(getText('.first-message')).to.eventually.equal('Worker one is processing...');
 

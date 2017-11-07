@@ -7,10 +7,15 @@ export default function(path) {
     return driver.wait(until.elementLocated(By.css('.first-worker')));
   };
 
-    return {
+  this.methods =  {
       navigate: () => {
         driver.navigate().to(path);
         return waitUntilVisible();
+      },
+      findElement: (selector) => {
+        if (selector.includes('.')) return driver.findElement(By.css(selector));
+        if (selector.includes('#')) throw new Error('selector must be an id ("foo") or a class (".bar")');
+        return driver.findElement(By.id(selector));
       },
       enterInput: (selector, value) => {
         if (!selector) throw new Error('Please provide a css selector');
@@ -24,27 +29,30 @@ export default function(path) {
       getValue: (selector) => {
         if (!selector) throw new Error('Please provide a css selector');
 
-        return driver.findElement(By.css(selector)).getAttribute('value');
+        return findElement(selector).getAttribute('value');
       },
       getText: (selector) => {
         if (!selector) throw new Error('Please provide a css selector');
 
-        return driver.findElement(By.css(selector)).getText();
+        return findElement(selector).getText();
       },
       submit: (selector) => {
         if (!selector) throw new Error('Please provide a css selector');
 
-        return driver.findElement(By.css(selector)).click();
+        return findElement(selector).click();
       },
       wait: (processor, timeout) => {
         return driver.wait(processor, timeout);
       },
       simulateTextChange: ({timeout, selector, message}, testExpectation) => {
-        const element = driver.findElement(By.css(selector));
+        const element = findElement(selector);
         return driver.wait(until.elementTextIs(element, message), timeout)
         .then(function() {
           return testExpectation(element.getText());
         });
       }
     };
+    const { findElement } = this.methods;
+
+    return this;
 };
